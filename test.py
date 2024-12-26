@@ -3,18 +3,13 @@ import yfinance as yf
 import requests
 import telebot
 from io import BytesIO
-from alpha_vantage.timeseries import TimeSeries
-import finnhub
-from datetime import datetime, timedelta
-import time
+import datetime
 import logging
 import ta
 
 BOT_TOKEN = '7083581490:AAE3gLoSvPxIkRwTW9YCjhOEHznbBTL2NBc'
 
 EXCEL_URL = "https://raw.githubusercontent.com/huixiannnxd/StockScreener/main/bullish_stocks.xlsx"
-
-finnhub_client = finnhub.Client(api_key="ctmmur1r01qjlgiqgkm0ctmmur1r01qjlgiqgkmg")
 
 bot = telebot.TeleBot(BOT_TOKEN)
 
