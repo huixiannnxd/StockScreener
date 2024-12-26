@@ -138,6 +138,8 @@ def handle_get_prices(message):
         active_stocks['ATR'] = active_stocks['Symbol'].apply(lambda x: get_atr(x) if x in active_stock_list else None)
     
         # Add TPSL
+        active_stocks['Stop Loss'] = None
+        active_stocks['Take Profit Price'] = None
         active_stocks = active_stocks.apply(calculate_stop_loss_take_profit, axis=1)
 
         filtered_stocks = active_stocks[active_stocks['To Enter'] == True][['Symbol', 'Entry Price', 'Trigger Date', 'Stop Loss', 'Take Profit Price']]
