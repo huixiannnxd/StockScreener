@@ -3,7 +3,7 @@ import yfinance as yf
 import requests
 import telebot
 from io import BytesIO
-import datetime
+from datetime import datetime
 import logging
 import ta
 
