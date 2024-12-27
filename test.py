@@ -11,6 +11,10 @@ BOT_TOKEN = '7083581490:AAE3gLoSvPxIkRwTW9YCjhOEHznbBTL2NBc'
 
 EXCEL_URL = "https://raw.githubusercontent.com/huixiannnxd/StockScreener/main/bullish_stocks.xlsx"
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 3225ef964ead4bddd914973bf496925aa16af3c5
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Function to fetch current stock prices
