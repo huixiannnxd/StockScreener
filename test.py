@@ -68,7 +68,9 @@ def get_atr(symbol, period='1mo', interval='1d', window=14):
     
     # Define function for TPSL
 def calculate_stop_loss_take_profit(row):
-    if row['ATR'] != None and row['To Enter'] == True and row['Condition Met'] == True:
+    to_enter = bool(row.get('To Enter', False))
+    condition_met = bool(row.get('Condition Met', False))
+    if pd.notnull(row['ATR']) and to_enter and condition_met:
         row['Stop Loss'] = row['Entry Price'] - 1.5 * row['ATR']
         row['Take Profit Price'] = row['Entry Price'] + 1.5 * row['ATR']
     else:
