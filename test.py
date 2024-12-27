@@ -125,6 +125,7 @@ def handle_get_prices(message):
         
         # Filter active stocks
         active_stocks = valid_stocks[
+        (pd.notnull(valid_stocks['Trigger Date']) &
         (valid_stocks['Trigger Date'] >= valid_stocks['Start on Open']) &
         (valid_stocks['Trigger Date'] < current_date) &
         (valid_stocks['Condition Met'])]
