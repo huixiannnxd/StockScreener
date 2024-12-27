@@ -142,8 +142,7 @@ def handle_get_prices(message):
         active_stocks['Take Profit Price'] = None
         active_stocks = active_stocks.apply(calculate_stop_loss_take_profit, axis=1)
 
-        # filtered_stocks = active_stocks[active_stocks['To Enter'] == True][['Symbol', 'Entry Price', 'Trigger Date', 'Stop Loss', 'Take Profit Price']]
-        filtered_stocks = valid_stocks
+        filtered_stocks = active_stocks[active_stocks['To Enter'] == True][['Symbol', 'Entry Price', 'Trigger Date', 'Stop Loss', 'Take Profit Price']]
         message_text = filtered_stocks.to_string(index=False)
         bot.reply_to(message, message_text)
         
