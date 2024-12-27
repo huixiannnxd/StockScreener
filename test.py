@@ -97,7 +97,7 @@ def handle_get_prices(message):
         # Filter for list of stocks that is within the valid period
         valid_stocks = stocks[
         (stocks['Start on Open'] <= current_date) &
-        (stocks['End on Close'] > current_date)]
+        (stocks['End on Close'] > current_date)].copy()
 
         valid_stocks_list = valid_stocks['Symbol'].tolist()
 
@@ -115,9 +115,9 @@ def handle_get_prices(message):
             except Exception as e:
                 logging.error(f"Error processing {stock}: {e}")
         
-        valid_stocks.loc[:, 'Condition Met'] = valid_stocks['Symbol'].apply(lambda x: results.get(x, False))
-        valid_stocks.loc[:, 'Entry Price'] = valid_stocks['Symbol'].apply(lambda x: entry_prices.get(x))
-        valid_stocks.loc[:, 'Trigger Date'] = valid_stocks['Symbol'].apply(
+        valid_stocks['Condition Met'] = valid_stocks['Symbol'].apply(lambda x: results.get(x, False))
+        valid_stocks['Entry Price'] = valid_stocks['Symbol'].apply(lambda x: entry_prices.get(x))
+        valid_stocks['Trigger Date'] = valid_stocks['Symbol'].apply(
             lambda x: trigger_dates.get(x).strftime('%Y-%m-%d') if pd.notnull(trigger_dates.get(x)) else None
         )
         
